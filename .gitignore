@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Nuxt
+apps/web/.nuxt/
+apps/web/.output/
+apps/web/dist/
+
+# Payload CMS
+apps/cms/dist/
+apps/cms/build/
+apps/cms/media/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.claude
+design_mockup/
+
+CLAUDE.md
+package-lock.json
+image_avatar_**.png
+Profile.pdf
