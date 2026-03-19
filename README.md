@@ -1,109 +1,63 @@
-# my-personal-blog
+# shnrqpdr.github.io
 
-Personal portfolio and blog - statically generated with **Nuxt 3 + Nuxt Content**, deployed to GitHub Pages.
+Blog pessoal onde escrevo sobre codigo, matematica, fisica e o que mais me interessar.
 
-## Features
+Nuxt 3 com conteudo em Markdown, geracao estatica e deploy automatico no GitHub Pages.
 
-- **Blog posts in Markdown** - file-based via Nuxt Content with syntax highlighting
-- **LaTeX documents** - write math with `$...$` / `$$...$$`, rendered via KaTeX; link to compiled PDFs
-- **Static site generation** - zero-server, deployed to GitHub Pages via GitHub Actions
-- **Tailwind CSS** - utility-first styling with `@tailwindcss/typography` prose renderer
+## Rodando local
 
-## Structure
-
-```
-my-personal-blog/
-├── apps/
-│   └── web/                  # Nuxt 3 app
-│       ├── content/
-│       │   ├── blog/         # Blog posts (.md)
-│       │   └── latex/        # LaTeX documents (.md with KaTeX math)
-│       ├── layouts/
-│       ├── pages/
-│       │   ├── index.vue
-│       │   ├── about.vue
-│       │   ├── blog/
-│       │   └── latex/
-│       └── nuxt.config.ts
-├── .github/workflows/
-│   └── deploy.yml            # GitHub Actions: generate + deploy to Pages
-└── package.json
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js >= 20
-
-### Install & run
+Node.js 20+.
 
 ```bash
 npm install
-npm run dev
-# → http://localhost:3000
+npm run dev          # http://localhost:3000
+npm run generate     # build estatico
+npm run preview      # preview do build
 ```
 
-### Build & preview locally
+## Estrutura
 
-```bash
-npm run generate
-npm run preview
+Tudo mora dentro de `apps/web/`:
+
+```
+apps/web/
+├── content/
+│   ├── blog/          # Posts (.md)
+│   └── notas/         # Notas tecnicas, com KaTeX
+├── components/
+├── layouts/
+├── pages/
+│   ├── index.vue
+│   ├── about.vue
+│   ├── blog/
+│   └── notas/
+├── utils/
+└── nuxt.config.ts
 ```
 
-## Writing Content
+## Conteudo
 
-### Blog posts
-
-Create a file in `apps/web/content/blog/`:
+Posts vao em `apps/web/content/blog/` como `.md` com frontmatter:
 
 ```md
 ---
-title: "My Post Title"
-description: "Short summary"
+title: "Titulo do post"
+description: "Resumo curto"
 date: "2026-03-08"
 tags: ["tag1", "tag2"]
 ---
 
-Post body here...
+Texto aqui...
 ```
 
-### LaTeX documents
+Se o post for de outro site, coloca `externalUrl` no frontmatter e ele vira um link externo na listagem.
 
-Create a file in `apps/web/content/latex/`. Write math using `$...$` (inline) and `$$...$$` (block):
+Notas vao em `apps/web/content/notas/`. Mesma ideia, mas com suporte a math (`$...$` inline, `$$...$$` bloco) via KaTeX. Da pra linkar um PDF com `pdfUrl`.
 
-```md
----
-title: "My Paper"
-description: "A short note on something interesting"
-date: "2026-03-08"
-pdfUrl: "/pdfs/my-paper.pdf"  # optional
----
+## Deploy
 
-The Gaussian integral evaluates to:
+Push na `master` e pronto. GitHub Actions roda `nuxt generate` e publica no Pages.
 
-$$
-\int_{-\infty}^{\infty} e^{-x^2} \, dx = \sqrt{\pi}
-$$
-```
+## Stack
 
-Math is rendered via **KaTeX**.
-
-## Deployment
-
-### GitHub Pages setup
-
-1. In your GitHub repo → **Settings → Pages**, set source to **GitHub Actions**.
-2. If the repo is a project page (not `<username>.github.io`), add a repository variable:
-   - **Settings → Variables → Actions**: `BASE_URL` = `/<repo-name>/`
-3. Push to `main` - the workflow builds and deploys automatically.
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Framework | [Nuxt 3](https://nuxt.com) |
-| Content | [Nuxt Content](https://content.nuxt.com) |
-| Math rendering | [KaTeX](https://katex.org) via remark-math + rehype-katex |
-| Styling | [Tailwind CSS](https://tailwindcss.com) + Typography plugin |
-| Deployment | GitHub Actions → GitHub Pages |
+Nuxt 3, Nuxt Content, Tailwind CSS, KaTeX, GitHub Actions.
