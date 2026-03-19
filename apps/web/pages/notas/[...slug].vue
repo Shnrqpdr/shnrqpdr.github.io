@@ -1,7 +1,8 @@
 <script setup lang="ts">
 const route = useRoute()
-const { data: doc } = await useAsyncData(`nota-${route.path}`, () =>
-  queryContent(route.path).findOne()
+const path = route.path.replace(/\/+$/, '')
+const { data: doc } = await useAsyncData(`nota-${path}`, () =>
+  queryContent(path).findOne()
 )
 
 if (!doc.value) {
