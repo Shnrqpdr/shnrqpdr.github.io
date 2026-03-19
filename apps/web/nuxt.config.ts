@@ -10,6 +10,12 @@ export default defineNuxtConfig({
 
   ssr: true,
 
+  router: {
+    options: {
+      strict: false,
+    },
+  },
+
   app: {
     baseURL: process.env.BASE_URL ?? '/',
     head: {
