@@ -15,7 +15,7 @@ const { data: docs } = await useAsyncData('notas', () =>
     <ul class="space-y-6 sm:space-y-8">
       <li v-for="doc in docs" :key="doc._path">
         <NuxtLink :to="doc._path" class="group block">
-          <span class="text-xs text-gray-400 dark:text-gray-500">{{ doc.date }}</span>
+          <span class="text-xs text-gray-400 dark:text-gray-500">{{ formatDate(doc.date) }}</span>
           <h2 class="text-base font-medium group-hover:opacity-70 transition-opacity">{{ doc.title }}</h2>
           <p v-if="doc.description" class="text-sm text-gray-500 dark:text-gray-400 mt-1">
             {{ doc.description }}

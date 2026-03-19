@@ -17,7 +17,7 @@ useSeoMeta({
 <template>
   <article v-if="doc">
     <header class="mb-8 sm:mb-10">
-      <p class="text-xs text-gray-400 dark:text-gray-500 mb-2">{{ doc.date }}</p>
+      <p class="text-xs text-gray-400 dark:text-gray-500 mb-2">{{ formatDate(doc.date) }}</p>
       <h1 class="text-xl sm:text-2xl font-bold tracking-tight leading-snug">{{ doc.title }}</h1>
       <p v-if="doc.description" class="text-gray-500 dark:text-gray-400 mt-3 text-base">
         {{ doc.description }}

@@ -90,7 +90,7 @@ const [{ data: posts }, { data: notas }] = await Promise.all([
     <ul class="space-y-4">
       <li v-for="nota in notas" :key="nota._path">
         <NuxtLink :to="nota._path" class="group flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4 py-2">
-          <span class="text-xs text-slate-400 dark:text-slate-500 mt-0.5 shrink-0 sm:w-24">{{ nota.date }}</span>
+          <span class="text-xs text-slate-400 dark:text-slate-500 mt-0.5 shrink-0 sm:w-24">{{ formatDate(nota.date) }}</span>
           <div>
             <span class="text-sm font-medium group-hover:opacity-70 transition-opacity">{{ nota.title }}</span>
             <p v-if="nota.description" class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{{ nota.description }}</p>
